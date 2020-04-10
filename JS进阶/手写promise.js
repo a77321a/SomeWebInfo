@@ -3,7 +3,7 @@
  * @Author:
  * @Date: 2020-04-08 10:13:22
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-08 15:24:14
+ * @LastEditTime: 2020-04-10 18:06:41
  */
 // Promise的构造方法接收一个executor()，在new Promise()时就立刻执行这个executor回调
 // executor()内部的异步任务被放入宏/微任务队列，等待执行
@@ -101,6 +101,24 @@ _promise.prototype.then = function (resolveFn, rejectFn) {
   })
 
 }
+// 实现吃catch
+// catch ()方法返回一个Promise，并且处理拒绝的情况。
+// 它的行为与调用Promise.prototype.then(undefined, onRejected) 相同。
+_promise.prototype.catch = (rejectFn) => {
+  return this.then(undefined, rejectFn)
+}
+
+//实现finally
+// finally()方法返回一个Promise。在promise结束时，无论结果是fulfilled或者是rejected，
+// 都会执行指定的回调函数。在finally之后，还可以继续then。并且会将值原封不动的传递给后面的then
+_promise.prototype.finally = (callback) => {
+  return this.then(
+    value => _promise.resolve(callback()).then(() => value),             // _promise.resolve执行回调,并在then中return结果传递给后面的Promise
+    reason => _promise.resolve(callback()).then(() => { throw reason })  // reject同理
+  )
+}
+
+
 
 
 

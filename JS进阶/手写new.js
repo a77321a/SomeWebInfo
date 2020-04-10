@@ -3,7 +3,7 @@
  * @Author:
  * @Date: 2020-04-09 09:24:04
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-09 09:27:20
+ * @LastEditTime: 2020-04-10 18:05:42
  */
 // 我们要知道new做了什么
 // 创建一个新对象，并继承其构造函数的prototype，这一步是为了继承构造函数原型上的属性和方法
