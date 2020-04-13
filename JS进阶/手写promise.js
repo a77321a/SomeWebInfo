@@ -3,7 +3,7 @@
  * @Author:
  * @Date: 2020-04-08 10:13:22
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 18:06:41
+ * @LastEditTime: 2020-04-13 14:56:32
  */
 // Promise的构造方法接收一个executor()，在new Promise()时就立刻执行这个executor回调
 // executor()内部的异步任务被放入宏/微任务队列，等待执行
@@ -101,7 +101,7 @@ _promise.prototype.then = function (resolveFn, rejectFn) {
   })
 
 }
-// 实现吃catch
+// 实现catch
 // catch ()方法返回一个Promise，并且处理拒绝的情况。
 // 它的行为与调用Promise.prototype.then(undefined, onRejected) 相同。
 _promise.prototype.catch = (rejectFn) => {
@@ -117,7 +117,35 @@ _promise.prototype.finally = (callback) => {
     reason => _promise.resolve(callback()).then(() => { throw reason })  // reject同理
   )
 }
-
+//静态的resolve方法
+_promise.prototype.resolve = (value) => {
+  if (value instanceof _promise) return value // 根据规范, 如果参数是Promise实例, 直接return这个实例
+  return new _promise(resolve => resolve(value))
+}
+//静态的reject方法
+_promise.prototype.reject = (reason) => {
+  return new _promise((resolve, reject) => reject(reason))
+}
+_promise.prototype.all = (arr) => {
+  let index = 0
+  let result = []
+  return new _promise((resolve, reject) => {
+    arr.forEach((v, i) => {
+      //Promise.resolve(v)用于处理传入值不为Promise的情况
+      _promise.resolve(v).then((val => {
+        index++
+        result[i] = val
+        //所有then执行后, resolve结果
+        if (index === arr.length) {
+          resolve(result)
+        }
+      }, err => {
+        //有一个Promise被reject时，_promise的状态变为reject
+        reject(err)
+      }))
+    })
+  })
+}
 
 
 
