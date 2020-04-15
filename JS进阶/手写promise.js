@@ -3,7 +3,7 @@
  * @Author:
  * @Date: 2020-04-08 10:13:22
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-13 14:56:32
+ * @LastEditTime: 2020-04-15 13:43:12
  */
 // Promise的构造方法接收一个executor()，在new Promise()时就立刻执行这个executor回调
 // executor()内部的异步任务被放入宏/微任务队列，等待执行
@@ -122,7 +122,7 @@ _promise.prototype.resolve = (value) => {
   if (value instanceof _promise) return value // 根据规范, 如果参数是Promise实例, 直接return这个实例
   return new _promise(resolve => resolve(value))
 }
-//静态的reject方法
+//静态的reject方法 ..
 _promise.prototype.reject = (reason) => {
   return new _promise((resolve, reject) => reject(reason))
 }
