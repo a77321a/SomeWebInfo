@@ -1,0 +1,57 @@
+<!--
+ * @Descripttion: 
+ * @Author: 
+ * @Date: 2020-05-19 14:39:05
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-05-19 15:02:03
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <div id="container"></div>
+  <button onclick="createBtn()">生成定时器</button>
+  <script>
+    function btnComponent(tLength, title) {
+      if (!tLength || !title) {
+        alert('生成组件信息有误')
+      }
+      var btn = document.createElement('button')
+      btn.innerHTML = title
+      btn.onclick = function () {
+        btn.setAttribute("disabled", true)
+        var deadline = tLength
+        if (deadline > 0) {
+          btn.innerHTML = '倒计时: ' + deadline + '秒'
+        }
+        var timer = setInterval(function () {
+          console.log(deadline)
+          if (deadline > 0) {
+            deadline--
+            btn.innerHTML = '倒计时: ' + deadline + '秒'
+          } else {
+            btn.removeAttribute("disabled", false)
+            btn.innerHTML = title
+            clearInterval(timer)
+            deadline = null
+          }
+        }, 1000)
+      }
+      return btn
+    }
+    function createBtn() {
+      var newBtn = new btnComponent(5, '点我')
+      var obj = document.getElementById('container')
+      obj.appendChild(newBtn)
+    }
+  </script>
+</body>
+
+</html>

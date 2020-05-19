@@ -1,0 +1,36 @@
+<!--
+ * @Descripttion: 
+ * @Author: 
+ * @Date: 2020-05-19 14:29:30
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-05-19 14:38:57
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="dialog">
+  </div>
+  <input type="text" id="txt">
+  <button onclick="addText()" id="send">添加</button>
+  <script>
+    function addText() {
+      var txt = document.getElementById('txt').value
+      var time = new Date()
+      var hhmmdd = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+      var result = hhmmdd + ' ' + txt
+      var child = document.createElement('div')
+      child.innerHTML = result
+      var parent = document.getElementById('dialog')
+      parent.appendChild(child)
+    }
+  </script>
+</body>
+
+</html>
