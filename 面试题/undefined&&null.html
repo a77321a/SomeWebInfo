@@ -1,0 +1,39 @@
+<!--
+ * @Descripttion: 
+ * @Author: 
+ * @Date: 2020-06-04 09:36:27
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-05 16:17:24
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //  JavaScript 的 7 种基本类型。
+    let primitiveTypes = ['string', 'number', 'null', 'undefined', 'boolean', 'symbol', 'bigint'];
+    console.log(!!null); // false
+    console.log(!!undefined); // false
+
+    console.log(Boolean(null)); // false
+    console.log(Boolean(undefined)); // false
+    // undefined是未指定特定值的变量的默认值，
+    // 或者没有显式返回值的函数，
+    // 如：console.log(1)，
+    // 还包括对象中不存在的属性，
+    // 这些 JS 引擎都会为其分配 undefined 值。
+
+    // null是“不代表任何值的值”。
+    // null是已明确定义给变量的值。
+    console.log(null == undefined); // true
+    console.log(null === undefined); // false
+  </script>
+</body>
+
+</html>
