@@ -1,0 +1,39 @@
+<!--
+ * @Descripttion: && 运算符
+ * @Author: 
+ * @Date: 2020-06-12 09:42:32
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-12 09:45:45
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>&& 运算符</div>
+  <script>
+    /**
+      && 也可以叫逻辑与，
+      在其操作数中找到第一个虚值表达式并返回它，
+      如果没有找到任何虚值表达式，
+      则返回最后一个真值表达式。
+      它采用短路来防止不必要的工作。    
+     **/
+    console.log(false && 1 && []); // false
+    console.log(" " && true && 5); // 5
+    //  使用if 与  
+    if (conMobile) {
+      conMobile.release();
+    }
+    // &&
+    conMobile && conMobile.release()
+
+  </script>
+</body>
+
+</html>
