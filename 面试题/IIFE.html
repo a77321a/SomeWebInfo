@@ -1,0 +1,46 @@
+<!--
+ * @Descripttion: 
+ * @Author: 
+ * @Date: 2020-06-15 14:01:47
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-15 14:02:22
+-->\
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  IIFE或立即调用的函数表达式是在创建或声明后将被调用或执行的函数。
+  创建IIFE的语法是，将function (){}包裹在在括号()内，
+  然后再用另一个括号()调用它，如：(function(){})()
+  <script>
+    (function () {
+
+    }());
+
+    (function () {
+    })();
+
+    (function named(params) {
+    })();
+
+    (() => {
+
+    });
+
+    (function (global) {
+    })(window);
+
+    const utility = (function () {
+      return {
+      }
+    })
+  </script>
+</body>
+
+</html>
